@@ -1,0 +1,29 @@
+/* 전체 선택자 : 모든 요소를 선택 */
+*{
+    /* margin: 0; 
+    padding: 0;
+    color: skyblue; */
+}
+
+/* 타입 선택자 : 특정 Tag명을 가진 모든 요소를 선택. 바꾸고 싶은 Tag 선택*/
+h1{
+    color: red;
+}
+/* 클래스 선택자 : 주어진 class 명을 가진 모든 요소를 선택 */
+.font-color{
+    color: orange;
+}
+.red-color{
+    color: red;
+}
+
+/* ID 선택자 : 요소의 ID로 선택 */
+#strong-black, p{
+    color: black;
+}
+
+/* 그룹 선택자 : ',' 콤마를 구분자로 사용해서 복수의 요소(Tag)를 선택 */
+
+#strong-black, .red-color {
+    font-size: 30px;
+}
