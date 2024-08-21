@@ -15,31 +15,38 @@
                 <li>
                     <label for="id">아이디</label>
                     <input type="text" id="id" placeholder="4자~10자 사이, 공백없이">
+                    <!-- <input type="text" name="id" required minlength="4" 
+                     maxlength="10"> -->
                 </li>
                 <li>
                     <label for="email">이메일</label>
                     <input type="email" id="email">
+                    <!-- <input name="email" required> -->
                 </li>
                 <li>
                     <label for="pw">비밀번호</label>
                     <input type="password" id="pw" placeholder="문자와 숫자, 특수 기호 포함">
+                    <!-- <input name="pw" required> -->
                 </li>
                 <li>
                     <label for="pwk">비밀번호 확인</label>
                     <input type="password" id="pwk">
+                    <!-- <input name="pwk" required> -->
                 </li>
                 <li>
                     <label for="rp">가입 경로</label>
-                    <!-- <input type="regist path" id="rp"> -->                
-                    <select id="rp">                
-                    <option value="0">기타</option>
-                    <option value="1">광고</option>
-                    <option value="2">지인</option>
+                    <!-- <input type="registPath" id="rp"> -->                
+                    <select id="rp">
+                    <!-- <select name="rp"> -->
+                        <option value="0">기타</option>
+                        <option value="1">광고</option>
+                        <option value="2">지인</option>
                     </select>            
                 </li>                       
                 <li>
                     <label for="memo">메모</label>
                     <textarea id="memo" cols="30" rows="10" placeholder="남길 말씀이 있다면여기에"></textarea>
+                    <!-- <textarea name="memo" -->
                 </li>
             </ul>    
         </fieldset>
