@@ -1,0 +1,24 @@
+.menu{
+    display: inline-block;
+    background-color: lightgray;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-right: -6px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px  rgb(92, 88, 88);
+}
+/* .sh1{
+    box-shadow: 10px 10px 10px 10px gray;
+    width: 10px;
+    height: 50px;
+    border: 5px solid ;
+    padding: 20px;
+    margin: 20px;
+
+} */
+
+ul:hover{
+    color: #4d4d4d;
+}

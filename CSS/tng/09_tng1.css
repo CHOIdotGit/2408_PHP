@@ -1,0 +1,44 @@
+.center{
+    text-align: center;
+    background-color: darkslategrey;
+    line-height: 75px;
+    color: white;
+    /* padding: 20px; */
+}
+.center1{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    
+}
+.nameRed{
+    color: red;
+    font-weight: 900;
+    font-size: 20px;
+    
+}
+.nonB{
+    list-style-type: none;
+    list-style-position: inside;
+    /* line-height: 2rem; */
+}
+body{
+    background-image: url(../../HTML/img/russian\ blue.webp);
+    background-repeat: no-repeat;
+    background-size: 350px;
+    background-position: 97% 98%;
+    border: 1px dotted #000;
+    height: 775px;
+    padding: 15px;
+    line-height: 30px;
+    /* background-color: #000; */
+}
+/*.container{
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    padding: 30px 15px;
+    background-color: #fff;
+    background-position: right bottom;
+}*/
+
