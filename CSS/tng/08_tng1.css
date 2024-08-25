@@ -1,8 +1,8 @@
-.bk{
+/* .bk{
     background-color: black;
     height: ;
 }
-.wh, .wh1{
+.wh{
     color: white;
     margin: 0;
     padding: 20px;
@@ -14,24 +14,66 @@
        
 }
 .wh1{
-    height: 8px;
+    font-size: 1em;
     
 }
 h3{
     color: red;
     font-size: 1.5em;
     
-}
-span{
+} */
+.blue{
     color: blue;
 }
-.center1, .center {
+/* .center1, .center {
     font-weight: 900;
     text-align: center;
-}
-.st{
+} */
+.smalltext{
     font-size: 0.7em;
 }
-form{
+/* form{
     width: ;
+} */
+ .container{
+    width: 650px;
+    margin: 0 auto;
+    padding: 5px;
+ }
+ .main{
+    width: 650px;
+    border: 1px solid #ccc;
+ }
+ .chk{
+    color: white;
+    font-size: 1em;
+    background: #222;
+    margin: 0;
+    padding: 10px;
+ }
+ .header p{
+    color: orange;
+    margin: 10px;
+    padding: 10px;
+   
+ }
+ h1{
+    color: white;
+    margin: 0;
+    padding: 20px;
+ }
+ h2{
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+    
+ }
+ .main p{
+    font-size: 1.2em;
+    line-height: 2em;
+    font-weight: bold;
+    text-align: center;
+ }
+.header{
+    background-color: #222;
 }
