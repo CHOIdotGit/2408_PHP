@@ -1,0 +1,25 @@
+.header, .main, .footer{
+    width: 800px;
+    margin: 10px auto;
+}
+.section{
+    border: 1px dashed #ccc;
+    width: 350px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+}
+/* 하단 바(?) */
+.footer{
+    clear: both;
+    background-color: #000;
+    color: #ffffff;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+/* section class 내부(?)에 위치한 p Tag 글자 크기 */
+.section p{
+    font-size: 12px;
+}
