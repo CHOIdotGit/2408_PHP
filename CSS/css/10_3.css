@@ -8,12 +8,12 @@ a:link{
     color: red;
 }
 
-/* 한번이라도 방문했던 링크 요소를 선택 */
+/* 한번이라도 방문했던 링크 요소를 선택 ! */
 a:visited{
     color: green;
 }
 
-/* 마우스 커서가 올라가 있는 요소를 선택 */
+/* 마우스 커서가 올라가 있는 요소를 선택 ! */
 a:hover, h1:hover{
     color: aqua;
     
@@ -32,7 +32,7 @@ h1:hover + p {
     display: block;
 }
 
-/* 포커스가 적용되어 있는 요소를 선택(하는 방법) */
+/* 포커스가 적용되어 있는 요소를 선택(하는 방법) ! */
 
 input:focus{
     border: 3px solid green;
@@ -57,7 +57,7 @@ input:checked + label{
     /* color: red; */
 }
 
-/* n번째 자식 요소에 스타일 적용 */
+/* n번째 자식 요소에 스타일 적용 ! */
 .container :nth-child(3){
     color: blue;
 }

@@ -1,5 +1,5 @@
 .menu{
-    display: inline-block;
+    /* display: inline-block;
     background-color: lightgray;
     width: 100px;
     height: 50px;
@@ -7,7 +7,7 @@
     text-align: center;
     margin-right: -6px;
     box-sizing: border-box;
-    box-shadow: 5px 5px  rgb(92, 88, 88);
+    box-shadow: 5px 5px  black; */
 }
 /* .sh1{
     box-shadow: 10px 10px 10px 10px gray;
@@ -19,6 +19,70 @@
 
 } */
 
-ul:hover{
-    color: #4d4d4d;
+ul{
+    box-shadow: 1px 5px 5px 5px black;
+    width: 600px;
+    height: 50px;
+    padding: 0;
+    /* margin: 0; */
+
 }
+li{
+    /* float: left; */
+    display: inline-block;
+    background-color: lightgray;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-right: -6px;
+    /* margin-left: -6px; */
+    box-sizing: border-box;
+    /* box-shadow: 5px 5px 5px 5px black; */
+    border-right: 4px solid greenyellow;
+    
+}
+
+.sh1 :nth-child(6){
+    border-right: none;
+    
+}
+li:hover{
+    background-color: #4d4d4d;
+}
+.menu6:hover{
+    background-color: #ff0000;
+    color: white;
+}
+
+ /* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+    padding: 20px;
+}
+
+ul{
+    list-style-type: none;
+    width: 740px;
+    height: 40px;
+    box-shadow: 0px 5px 5px 5px black;
+}
+li{
+    padding: 10px 40px;
+    float: left;
+    background-color: #bebebe;
+}
+
+li:not(:last-child){
+    border-right: 3px solid #48e748;
+} 
+li:hover{
+    background-color: #4d4d4d;
+}
+li:last-child:hover{
+    background-color: red;
+    color: white;
+}*/

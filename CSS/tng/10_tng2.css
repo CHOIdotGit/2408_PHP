@@ -1,0 +1,71 @@
+*{
+    margin: 5px;
+    padding: 0;
+    box-sizing: border-box;
+}
+legend{
+    color: violet;    
+}
+.required{
+    font-weight: 800;
+}
+.redred{
+    font-weight: 800;
+    vertical-align: top;
+}
+.red:focus{
+    /* border-color: red;
+    border-style: solid;
+    box-sizing: border-box; */
+    
+}
+
+.weight{
+    font-weight: 800;
+}
+/* .weight:active{
+    border-color: red;
+} */
+fieldset{
+    background-image: url("../../HTML/img/russian\ blue.webp");
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: 50% 100%;
+    padding: 10px;
+    margin: 50px;
+    height: 380px;
+    width: 500px;
+}
+input:checked + label{
+    color: red;
+}
+textarea, input{
+    background-color: transparent;
+}
+
+input:focus, textarea:focus{
+    border: 3px solid red;
+    outline: none;
+}
+.required::before{
+    content: '*';
+    color: red;
+}
+
+/* .behind:hover{
+    display: inline-block;
+    background-color: black;
+
+} */
+/* button{
+    cursor: pointer;
+} */
+.behind{
+    display: none;
+   
+}
+button:hover + .behind{
+    display: inline-block;
+    background-color: black;
+    color: white;
+}
