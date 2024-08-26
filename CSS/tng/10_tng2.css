@@ -13,12 +13,12 @@ legend{
     font-weight: 800;
     vertical-align: top;
 }
-.red:focus{
-    /* border-color: red;
+/* .red:focus{
+    border-color: red;
     border-style: solid;
-    box-sizing: border-box; */
-    
-}
+    box-sizing: border-box; 
+     
+} */
 
 .weight{
     font-weight: 800;
