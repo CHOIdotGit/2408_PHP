@@ -1,0 +1,35 @@
+/* div를 동그랗게 원이 보이도록 / 위아래로 움직이게 */
+.ball{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    animation: updown 1s infinite /* alternate ease-in-out */;
+    border-top: 2px solid red;
+    border-bottom: 2px solid navy;
+}
+
+/*  transform: translate이후에 x나 y을 붙여 움직일 축을 정하거나 괄호 안에 콤마를 넣어 
+    x, y 좌표를 정할 수 있다 / @keyframe를 사용하여 에니메이션 효과를 적용할 수 있다 */
+@keyframes updown{
+    from{
+        /* transform: translate(0, 0); */
+        /* transform: translatey(0); */
+        transform: rotate(0deg);
+    }
+    to{
+        /* transform: translate(300px, 300px); */
+        /* transform: translatey(300px); */
+        transform: rotate(360deg);
+    }
+}
+
+.container{
+    position: relative;
+}
+
+.absolute{
+    position: absolute;
+    top: 50px;
+    left: 25px;
+}
