@@ -20,17 +20,17 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     /* grid-auto-rows: minmax(100px, auto); */
     justify-content: space-between;
-
     align-items: center;
+
     background-image: url(./img/img_1.jpg);
-    color: white;
     background-repeat: no-repeat;
-    padding: 20px;
+    background-size: cover;
     
+    color: white;
+    margin: 0;
+    padding: 20px;
     height: auto;
     
-    background-size: cover;
-    margin: 0;
     
 }
 
@@ -39,11 +39,11 @@ a {
 }
 
 
-.between {
+/* .between {
     display: flex;
-    /* grid-template-columns: auto 1fr; */
+    grid-template-columns: auto 1fr; 
     justify-content: space-between;
-}
+} */
 
 h1 {
     font-size: 4rem;
