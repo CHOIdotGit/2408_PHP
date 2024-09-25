@@ -8,8 +8,6 @@ $conn = null;
 
 
 try {
-    throw new Exception("강제 예외");
-
     //PDO Instance
     $conn = my_db_conn();
 
@@ -44,6 +42,8 @@ try {
     
 } catch(Throwable $th) {
     // echo $th->getMessage();
+    // 위 에러 표시 대신 밑의 코드를 사용
+    require_once(MY_PATH_ROOT);
     exit; // 이후의 처리를 하지 않음
 }
 
@@ -65,7 +65,7 @@ try {
 
     <main >
         <div class="main-top">
-            <a href="./insert.html">
+            <a href="/insert.php">
                 <button class="btn-middle ">글 작성</button>
             </a>
         </div>
@@ -78,7 +78,7 @@ try {
             <?php foreach($result as $item) { ?>
             <div class="item list-conten">
                 <div><?php echo $item["id"] ?></div>
-                <div><a href="./detail.html"><?php echo $item["title"] ?></a></div>
+                <div><a href="/detail.php?id=<?php echo $item["id"] ?>&page=<?php echo $page ?>"><?php echo $item["title"] ?></a></div>
                 <div><?php echo $item["created_at"] ?></div>
             </div>
             <?php } ?>

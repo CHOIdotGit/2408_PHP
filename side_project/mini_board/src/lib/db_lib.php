@@ -53,3 +53,52 @@ function my_board_total_count(PDO $conn) {
 
     return $result["cnt"];
 }
+
+// board 테이블 insert 처리
+function my_board_insert(PDO $conn, array $arr_param) {
+    $sql = 
+        " INSERT INTO board ( "
+        ."      title "
+        ."      ,content "
+        ." ) "
+        ." VALUES ( "
+        ."      :title "
+        ."      ,:content "
+        ." ) "
+    ;
+
+    $stmt = $conn->prepare($sql);
+    $result_flg = $stmt->execute($arr_param);
+    
+    if(!$result_flg) {
+        throw new Exception("쿼리 실행 실패");
+    }
+
+    $result_cnt = $stmt->rowCount();
+
+    if($result_cnt !== 1) {
+        throw new Exception("Insert Count 이상");
+    }
+    
+    return true;
+}
+
+// id로 게시글 조회
+function my_board_select_id(PDO $conn, array $arr_param) {
+    $sql = 
+    " SELECT "
+        ."      * "
+        ." FROM "
+        ."      board "
+        ." WHERE "
+        ."      id = :id "
+    ;
+    $stmt = $conn->prepare($sql);
+    $result_flg = $stmt->execute($arr_param);
+
+    if(!$result_flg) {
+        throw new Exception("쿼리 실행 실패");
+    }
+    
+    return $stmt->fetch();
+}
