@@ -36,3 +36,20 @@ function my_board_select_pagination(PDO $conn, array $arr_param) {
 
     return $stmt->fetchAll();
 }
+
+// board 테이블 유효 게시글 총 수 획득
+function my_board_total_count(PDO $conn) {
+    $sql =
+        " SELECT "
+        ."      COUNT(*) cnt "
+        ." FROM "
+        ."      board "
+        ." WHERE "
+        ."      deleted_at IS NULL "
+    ;
+
+    $stmt = $conn->query($sql);
+    $result = $stmt->fetch();
+
+    return $result["cnt"];
+}

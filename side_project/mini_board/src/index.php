@@ -8,13 +8,30 @@ $conn = null;
 
 
 try {
+    throw new Exception("강제 예외");
+
     //PDO Instance
     $conn = my_db_conn();
 
+    // max page 획득 처리
+    $max_board_cnt = my_board_total_count($conn); // 게시글 총 수 획득
+    $max_page = (int)ceil($max_board_cnt / MY_LIST_COUNT); // max page 획득
+
     // pagination 설정 처리
-    $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
-    $offset = ($page - 1) * MY_LIST_COUNT;
+    $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1; // 현재 페이지 획득
+    $offset = ($page - 1) * MY_LIST_COUNT; // 오프셋 설정
+    // 화면 표시 페이지 버튼 시작 값
+    $start_page_button_number = (int)(floor(($page - 1) / MY_PAGE_BUTTON_COUNT) * MY_PAGE_BUTTON_COUNT) + 1; 
+    // 화면 표시 페이지 버튼 마지막 값
+    $end_page_button_number = $start_page_button_number + (MY_PAGE_BUTTON_COUNT - 1);
     
+    // max page 초과시 페이지 버튼 마지막 값 조절
+    $end_page_button_number = $end_page_button_number > $max_page ? $max_page : $end_page_button_number;
+    
+    // 이전 버튼
+    $prev_page_button_number = $page - 1 < 1 ? 1 : $page - 1; 
+    // 다음버튼
+    $next_page_button_number = $page + 1 > $max_page ? $max_page : $page + 1; 
 
     // prepared statment setitng
     $arr_prepare = [
@@ -26,7 +43,8 @@ try {
     $result = my_board_select_pagination($conn, $arr_prepare);
     
 } catch(Throwable $th) {
-    echo $th->getMessage();
+    // echo $th->getMessage();
+    exit; // 이후의 처리를 하지 않음
 }
 
 ?>
@@ -41,9 +59,10 @@ try {
     <title>리스트 페이지</title>
 </head>
 <body>
-    <header>
-        <h1>mini Board</h1>
-    </header> 
+    <?php
+    require_once(MY_PATH_ROOT."header.php");
+    ?>
+
     <main >
         <div class="main-top">
             <a href="./insert.html">
@@ -65,13 +84,15 @@ try {
             <?php } ?>
         </div>
         <div class="main-footer">
-            <a href="/index.php?page=1"><button class="btn-small">이전</button></a>
-            <a href="/index.php?page=1"><button class="btn-small">1</button></a>
-            <a href="/index.php?page=2"><button class="btn-small">2</button></a>
-            <a href="/index.php?page=3"><button class="btn-small">3</button></a>
-            <a href="/index.php?page=4"><button class="btn-small">4</button></a>
-            <a href="/index.php?page=5"><button class="btn-small">5</button></a>
-            <a href="/index.php?page=6"><button class="btn-small">다음</button></a>
+            <?php if($page !== 1) { ?>
+                <a href="/index.php?page=<?php echo $prev_page_button_number ?>"><button class="btn-small">이전</button></a>
+            <?php } ?>
+            <?php for($i = $start_page_button_number; $i <= $end_page_button_number; $i++) { ?> 
+                <a href="/index.php?page=<?php echo $i ?>"><button class="btn-small <?php echo $page === $i ? "btn-seleted" : "" ?>"><?php echo $i ?></button></a>
+            <?php } ?>
+            <?php if($page !== $max_page) { ?>
+                <a href="/index.php?page=<?php echo $next_page_button_number ?>"><button class="btn-small">다음</button></a>
+            <?php } ?>                              
         </div>
     </main>
 </body>
