@@ -1,7 +1,8 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
     require_once(MY_PATH_DB_LIB);
-
+    $conn = null;
+    
     // post로 왔을 때 데이터를 저장
     // $_SERVER의 REQUEST_METHOD로 인해 GET으로 왔는지 POST로 왔는지 
     // 확인 할 수 있다.

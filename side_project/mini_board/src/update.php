@@ -7,9 +7,8 @@
     try {
         if(strtoupper($_SERVER["REQUEST_METHOD"]) === "GET") {
             // GET처리
-            $id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
-
             // page 획득
+            $id = isset($_GET["id"]) ? (int)$_GET["id"] : 0;
             $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
 
             if($id < 1) {
@@ -27,9 +26,8 @@
             $result = my_board_select_id($conn, $arr_prepare);
 
         } else {
-            // POST 처리
-
-            // parameter 획득
+        // POST 처리
+            // parameter 획득(id, page, title, content)
             // id 획득
             $id = isset($_POST["id"]) ? (int)$_POST["id"] : 0;
 
@@ -51,8 +49,28 @@
             
             // beginTransaction / Transaction Start
             $conn->beginTransaction();
+
+            $arr_prepare = [
+                "id" => $id
+                ,"title" => $title
+                ,"content" => $content
+            ];
+
+            my_board_update($conn, $arr_prepare);
+
+            // commit
+            $conn->commit();
+
+            // detail 페이지로 이동
+            header("Location: /detail.php?id=".$id."&page=".$page);
+            exit;
         }
     } catch(Throwable $th) {
+        if(!is_null($conn) && $conn->inTransaction()) {
+            $conn->rollBack();
+        }
+
+
         require_once(MY_PATH_ERROR);
         exit;
     }
