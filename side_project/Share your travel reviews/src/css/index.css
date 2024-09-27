@@ -1,0 +1,114 @@
+.main_title {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    justify-content: left;
+    /* align-items: center; */
+    /* width: 720px; */
+    height: 180px;
+    background-image: url("../img/M_visual.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    padding: 10px;
+    width: 250px;
+}
+
+.container {
+    background-color: #E2E2E2;
+    /* display: grid;
+    grid-template-rows: auto 1fr; */
+}
+
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* justify-content: center;
+    align-items: center; */
+    /* margin: 5rem; */
+}
+
+.card {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); */
+    width: 20rem;
+    height: 30rem;
+    background-color: #BBD0ED;
+    /* padding: 1rem;*/
+    border-radius: 10px; 
+}
+
+.pop_card_img {
+    margin: 1rem;
+    width: 18rem;
+    height: 22rem;
+    background-image: url("../img/20240216_102444.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.pop_card_title {
+    display: flex;
+    justify-content: center;
+    margin: 2.2rem;
+    color: #c55B65;
+    font-size: xx-large;
+
+    /* padding: 15px; */
+}
+
+.oversee_card_img {
+    margin: 1rem;
+    width: 18rem;
+    height: 22rem;
+    background-image: url("../img/20240215_201307.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.oversee_card_title {
+    display: flex;
+    justify-content: center;
+    margin: 2.2rem;
+    color: #0F119D;
+    font-size: xx-large;
+}
+
+.domestic_card_img {
+    margin: 1rem;
+    width: 18rem;
+    height: 22rem;
+    background-image: url("../img/ryu-kim-S7t46jP_GWM-unsplash\ \(1\).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.domestic_card_title {
+    display: flex;
+    justify-content: center;
+    margin: 2.2rem;
+    color: #1E9746;
+    font-size: xx-large;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 2rem;
+    font-size: 0.7rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
