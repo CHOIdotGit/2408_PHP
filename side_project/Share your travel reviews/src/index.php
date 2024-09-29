@@ -14,18 +14,18 @@
     <title>Share your travel reviews!</title>
 </head>
 <body>
-    <header class="header">
-            <a href="/">
+    <div class="header">
+            <a href="./index.php">
                 <div class="main_title">
                     <h1>Share your travel reviews!</h1>
                 </div>
             </a>
-    </header>
+    </div>
     <div class="container">
         <main class="main-content">
             <div class="card">
                 <div class="pop_card_img"></div>
-                <a href="/domestic.php"><h2 class="pop_card_title">인기글</h2></a>
+                <a href="/pop.php"><h2 class="pop_card_title">인기글</h2></a>
             </div>
             <div class="card">
                 <div class="oversee_card_img"></div>
@@ -33,7 +33,7 @@
             </div>
             <div class="card">
                 <div class="domestic_card_img"></div>
-                <a href="/pop.php"><h2 class="domestic_card_title">국내 여행</h2></a>
+                <a href="/domestic.php"><h2 class="domestic_card_title">국내 여행</h2></a>
             </div>
         </main>
     </div>    
