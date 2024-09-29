@@ -14,6 +14,7 @@
     <title>Share your travel reviews!</title>
 </head>
 <body>
+    <!-- 여기 div를 header를 줘도 어차피 css에서 display: inline-block 설정해야함 -->
     <div class="header">
             <a href="./index.php">
                 <div class="main_title">

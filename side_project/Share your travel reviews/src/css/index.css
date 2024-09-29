@@ -1,3 +1,7 @@
+.header {
+    display: inline-block;
+}
+
 .main_title {
     display: flex;
     /* grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
@@ -20,8 +24,8 @@ h1 {
 
 .container {
     background-color: #E2E2E2;
-    /* display: grid;
-    grid-template-rows: auto 1fr; */
+    /* display: inline-block; */
+    /* grid-template-rows: auto 1fr; */
 }
 
 
