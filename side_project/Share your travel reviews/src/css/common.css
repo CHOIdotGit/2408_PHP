@@ -5,12 +5,53 @@
     /* font-family: '맑은고딕'; */
 }
 
-a {
-    text-decoration: none;
+body {
+    color: #F3F3F3;
 }
 
+.header_title {
+    display: inline-block;
+    width: 100%;
+    /*flex-direction: row; */
+    /* grid -> flex -> inline-block */
+    /* grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
+    /* justify-content: left; */
+    /* align-items: center; */  
+}
 
-.btn-cir-small {
+.header-img {
+    display: flex;
+    justify-content: left;
+    /* align-items: center; */
+    background: url("../img/M_visual.png") no-repeat;
+    background-size: cover;
+    height: 35vh;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #014CA1;
+    color: #E2E2E2;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+    text-align: center;
+    gap: 3rem;
+}
+
+.btn-small {
     width: 45px;
     height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
 }

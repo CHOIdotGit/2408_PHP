@@ -76,7 +76,7 @@ try {
                 <div>작성일자</div>
             </div>
             <?php foreach($result as $item) { ?>
-            <div class="item list-conten">
+            <div class="item list-content">
                 <div><?php echo $item["id"] ?></div>
                 <div><a href="/detail.php?id=<?php echo $item["id"] ?>&page=<?php echo $page ?>"><?php echo $item["title"] ?></a></div>
                 <div><?php echo $item["created_at"] ?></div>

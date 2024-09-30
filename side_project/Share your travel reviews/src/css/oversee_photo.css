@@ -1,0 +1,128 @@
+.oversee-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/M_visual.png") no-repeat;
+    background-size: cover;
+    height: 35vh;
+}
+
+h1 {
+    color: white;
+    font-size: 3.5rem;
+    text-align: center;
+    /* padding: 10px; */
+    width: 450px;
+}
+
+.top-btn {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-evenly;
+    padding: 0 0 0 22rem;
+    margin: 2rem;
+}
+
+.btn-center {
+    padding-top: 5px;
+    text-align: center;
+    border-radius: 13px;
+    height: 2rem;
+    width: 15rem;
+    
+}
+
+.btn-right {
+    border-radius: 13px;
+    height: 2rem;
+    width: 5rem;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 5rem;
+}
+
+.card {
+    width: 15rem;
+    height: 26rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+/* .oversee_img {
+    background-size: cover;
+    margin: 1rem;
+    width: 13rem;
+    height: 18rem;
+} */
+
+.oversee_img_one {
+    background: url("../img/20220811_150558722.jpg") no-repeat;
+    background-size: cover;
+    margin: 1rem;
+    width: 13rem;
+    height: 18rem;
+}
+
+.oversee_img_two {
+    background: url("../img/20220812_135815876.jpg") no-repeat;
+    background-size: cover;
+    margin: 1rem;
+    width: 13rem;
+    height: 18rem;
+}
+
+.oversee_img_three {
+    background: url("../img/20221221_113403.jpg") no-repeat;
+    background-size: cover;
+    margin: 1rem;
+    width: 13rem;
+    height: 18rem;
+}
+
+.oversee_img_four {
+    background: url("../img/20221221_114739984.jpg") no-repeat;
+    background-size: cover;
+    margin: 1rem;
+    width: 13rem;
+    height: 18rem;
+}
+
+.oversee_title {
+    color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.oversee_write {
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+.go_reviews{
+    padding-left: 11.2rem;
+}
+
+.btn-bottom{
+    border-radius: 13px;
+    height: 2rem;
+    width: 15rem;
+    cursor: pointer;
+}
+
+
+

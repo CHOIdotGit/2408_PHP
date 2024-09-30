@@ -1,0 +1,89 @@
+.oversee-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/M_visual.png") no-repeat;
+    background-size: cover;
+    height: 35vh;
+}
+
+h1 {
+    color: white;
+    font-size: 3.5rem;
+    text-align: center;
+    /* padding: 10px; */
+    width: 450px;
+}
+
+.top-btn {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-evenly;
+    padding: 0 0 0 22rem;
+    margin: 2rem;
+}
+
+.btn {
+    background-color: #014CA1;
+    color: #E2E2E2;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-center {
+    padding-top: 5px;
+    text-align: center;
+    border-radius: 13px;
+    height: 2rem;
+    width: 15rem;
+}
+
+.btn-right {
+    border-radius: 13px;
+    height: 2rem;
+    width: 5rem;
+    cursor: pointer;
+}
+
+.main-list {
+    padding: 0 11.2rem 0 11.2rem;
+}
+
+.list-head {
+    background-color: #014CA1;
+    color: #E2E2E2;
+    height: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.item {
+    /* display: flex;
+    justify-content: space-around; */
+    margin: 1rem;
+}
+
+.list-content {
+    background-color: #AADEF1;
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 2.5rem;
+    border-radius: 8px;
+}
+
+.go_reviews{
+    padding-left: 12rem;
+    margin: 2rem;
+}
+
+.btn-bottom{
+    border-radius: 13px;
+    height: 2rem;
+    width: 15rem;
+    cursor: pointer;
+}
