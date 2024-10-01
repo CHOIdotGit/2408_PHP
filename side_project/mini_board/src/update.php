@@ -108,7 +108,7 @@
             <div class="box content-box">
                 <div class="box-title">내용</div>
                 <div class="box-content">
-                    <textarea name="content" id="contetn"><?php echo $result["content"] ?></textarea>
+                    <textarea name="content" id="content"><?php echo $result["content"] ?></textarea>
                 </div>
             </div>
        

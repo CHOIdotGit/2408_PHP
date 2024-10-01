@@ -74,7 +74,7 @@
             </ul>
        
             <div class="main-footer">
-                <button type="submit"  class="btn-small">작성</button>
+                <button type="submit" class="btn-small">작성</button>
                 <a href="/"><button type="button" class="btn-small">취소</button></a>
             </div>
         </form>

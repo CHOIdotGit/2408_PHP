@@ -8,19 +8,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/oversee_reviews.css">
-    <title>해외 여행 후기 게시판</title>
+    <link rel="stylesheet" href="./css/reviews.css">
+    <title>여행 후기 게시판</title>
 </head>
 <body>
     <div class="header">
         <div class="header_title">
-            <a href="./index.php" class="oversee-img">
-                <h1>해외 여행</h1>
+            <a href="./index.php" class="header-img">
+                <h1>Share your travel reviews!</h1>
             </a>
         </div>
-    </div>    
+    </div>
     <div class="top-btn">
-        <div class="btn btn-center">해외 여행 후기 게시판</div>
+        <div class="btn btn-center">여행 후기 게시판</div>
         <div>
             <a href="./oversee_reviews_insert.php"><button class="btn btn-right">글 작성</button></a>
         </div>

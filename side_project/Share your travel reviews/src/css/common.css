@@ -6,7 +6,7 @@
 }
 
 body {
-    color: #F3F3F3;
+    background-color: #F3F3F3;
 }
 
 .header_title {
@@ -26,6 +26,14 @@ body {
     background: url("../img/M_visual.png") no-repeat;
     background-size: cover;
     height: 35vh;
+}
+
+h1 {
+    color: white;
+    font-size: 3.5rem;
+    text-align: center;
+    /* padding: 10px; */
+    width: 450px;
 }
 
 a {
@@ -53,5 +61,12 @@ a {
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-bottom{
+    border-radius: 13px;
+    height: 2rem;
+    width: 15rem;
     cursor: pointer;
 }
