@@ -56,7 +56,7 @@
 .oversee_card_title {
     display: flex;
     justify-content: center;
-    margin: 1.4rem;
+    /* margin: 1.4rem; */
     color: #014CA1;
     font-size: xx-large;
 }
@@ -74,7 +74,7 @@
 .domestic_card_title {
     display: flex;
     justify-content: center;
-    margin: 1.4rem;
+    /* margin: 1.4rem; */
     color: #1E9746;
     font-size: xx-large;
 }

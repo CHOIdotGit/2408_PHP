@@ -1,5 +1,40 @@
 <?php
+    require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
+    require_once(MY_PATH_DB_LIB);
+    $conn = null;
+    
+    // post로 왔을 때 데이터를 저장
+    // $_SERVER의 REQUEST_METHOD로 인해 GET으로 왔는지 POST로 왔는지 
+    // 확인 할 수 있다.
+    // strtoupper << 여기 안을 대문자 처?리
+    if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
+        try {
+            // PDO Instance
+            $conn = my_db_conn();
 
+            // insert 처리 / 유효성 체크는 지금은 하지 않는다.
+            $arr_prepare = [
+                "user_id" => $_POST["user_id"]
+                ,"title" => $_POST["title"]
+                ,"content" => $_POST["content"]
+            ];
+
+            //begin transaction
+            $conn->beginTransaction();
+            my_board_insert($conn, $arr_prepare);
+            
+            $conn->commit();
+
+            header("Location: /"); // 요청을 보내고 응답 - html의 head태그에 "/"(루트)로 이동하는 로케이션을 넣음
+            exit;
+        } catch(Throwable $th) {
+            if(!is_null($conn)) {
+                $conn->rollBack();
+            }
+            require_once(MY_PATH_ERROR);
+            exit;
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +73,10 @@
                     <div id="upload-img"></div>
                 </div>
                 <div class="t_area">
-                    <textarea name="content" id="content" class="content" placeholder="내용은 간략하게 적어주세요.(40자 제한)"></textarea>            
+                    <textarea name="content" id="content" class="content" maxlength="30" placeholder="내용은 간략하게 적어주세요.(30자 제한)"></textarea>            
                 </div>
             </div>
-            <div class="file-upload preview-img">
+            <div class="file-upload">
                 <label for="up-file">파일 선택</label>
                 <input type="file" id="up-file" accept="image/*" onchange="setThumbnail(event);">
             </div>
