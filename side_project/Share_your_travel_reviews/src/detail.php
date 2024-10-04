@@ -61,7 +61,7 @@
             <div id="upload-img"><img src="<?php echo $result["img"] ?>"></div>
         </div>
         <div class="t_area">
-        <div class="box-content"><?php echo $result["content"] ?></div> <!-- 내용 -->          
+        <textarea readonly class="box-content"><?php echo $result["content"] ?></textarea> <!-- 내용 -->          
         </div>
     </div>
     <!-- <div class="file-upload preview-img">
@@ -81,7 +81,7 @@
         }
     </script>
     <form action="" class="btn-insert">
-        <a href="/update.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>"><button type="submit" class="btn-write">수정</button></a>
+        <a href="/update.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>"><button type="button" class="btn-write">수정</button></a>
         <a href="/photo.php?page=<?php echo $page ?>"><button type="button" class="btn-cancel">취소</button></a>
         <a href="/delete.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>"><button type="button" class="btn-cancel">삭제</button></a>
     </form>

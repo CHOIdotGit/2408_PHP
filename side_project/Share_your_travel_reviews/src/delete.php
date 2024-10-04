@@ -102,10 +102,10 @@ try {
     </div>
     <div class="content-area">
         <div class="img-box">
-            <div id="upload-img"></div>
+            <div id="upload-img"><img src="<?php echo $result["img"] ?>"></div>
         </div>
         <div class="t_area">
-            <textarea name="content" id="content" class="content"></textarea>            
+            <textarea readonly class="content"><?php echo $result["content"] ?></textarea>            
         </div>
     </div>
     <!-- <div class="file-upload preview-img">

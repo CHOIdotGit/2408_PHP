@@ -11,10 +11,17 @@
         try {
             // PDO Instance
             $conn = my_db_conn();
+            $up_file = $_FILES["up_file"];
+            $tmp_file_path = $up_file["tmp_name"];
 
+            $type = explode("/", $up_file["type"]);
+            $file_name = uniqid().".".$type[1];
+
+            move_uploaded_file($tmp_file_path, MY_PATH_ROOT."img/".$file_name);
             // insert 처리 / 유효성 체크는 지금은 하지 않는다.
             $arr_prepare = [
                 "user_id" => $_POST["user_id"]
+                ,"img" => "/img/".$file_name
                 ,"title" => $_POST["title"]
                 ,"content" => $_POST["content"]
             ];
@@ -59,11 +66,11 @@
         <div class="full_screen">화면을 최대화 해주세요!!!</div>  
     </div>
     <main>
-        <form action="/photo_insert.php" method="post">
+        <form action="/photo_insert.php" method="post" enctype="multipart/form-data">
             <div class="text-title">
-                <input type="text" id="title" name="title" class="title" placeholder="제목">
+                <input type="text" maxlength="15" id="title" name="title" class="title" placeholder="제목은 최대 15글자 입니다.">
                 <div class="user_num">회원 번호</div>
-                <input type="number" id="user_id" name="user_id" class="user_id">
+                <input type="number" id="user_id" maxlength="10" name="user_id" class="user_id" placeholder="최대 10자리 숫자로 사용해주세요.">
             </div>
             <div class="hr">
                 <hr>
@@ -73,12 +80,14 @@
                     <div id="upload-img"></div>
                 </div>
                 <div class="t_area">
-                    <textarea name="content" id="content" class="content" maxlength="30" placeholder="내용은 간략하게 적어주세요.(30자 제한)"></textarea>            
+                    <textarea name="content" id="content" class="content" maxlength="20" placeholder="내용은 간략하게 적어주세요.(20자 제한)"></textarea>            
                 </div>
             </div>
             <div class="file-upload">
-                <label for="up-file">파일 선택</label>
-                <input type="file" id="up-file" accept="image/*" onchange="setThumbnail(event);">
+                <div class="file_box">
+                    <label for="up_file">파일 선택</label>
+                    <input type="file" id="up_file" name="up_file" accept="image/*" onchange="setThumbnail(event);">
+                </div>
             </div>
             <script>
                 function setThumbnail(event) {
@@ -93,8 +102,8 @@
                 }
             </script>
             <div class="btn-insert">
-                <button type="submit" class="btn-write">작성</button>
-                <a href="/"><button type="button" class="btn-cancel">취소</button></a>
+                <a href="/photo.php"><button type="submit" class="btn-write">작성</button></a>
+                <a href="/photo.php"><button type="button" class="btn-cancel">취소</button></a>
             </div>
         </form>
     </main>

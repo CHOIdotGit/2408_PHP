@@ -77,7 +77,7 @@ try {
                 <div class="oversee_img"><img src="<?php echo $item["img"] ?>"></div>
                 <a href="/detail.php?id=<?php echo $item["id"] ?>&page=<?php echo $page ?>" class="title"><h2 class="oversee_title"><?php echo $item["title"] ?></h2></a>
                 <div class="write">
-                    <p class="oversee_write"><?php echo $item["content"] ?></p>
+                    <textarea readonly class="oversee_write"><?php echo $item["content"] ?></textarea>
                 </div>
             </div>
             <?php } ?>

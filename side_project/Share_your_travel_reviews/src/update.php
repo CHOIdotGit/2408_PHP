@@ -12,7 +12,7 @@ try {
         $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
 
         if($id < 1) {
-            throw new Exception("파라미터 오류");
+            throw new Exception("파라미터 오류 : G");
         }
 
         // PDO Instance
@@ -30,9 +30,6 @@ try {
         // parameter 획득(id, page, title, content)
         // id 획득
         $id = isset($_POST["id"]) ? (int)$_POST["id"] : 0;
-        
-        // user_id 획득
-        $id = isset($_POST["user_id"]) ? (int)$_POST["user_id"] : 0;
 
         // page 획득
         $page = isset($_POST["page"]) ? (int)$_POST["page"] : 1;
@@ -44,9 +41,9 @@ try {
         $content = isset($_POST["content"]) ? $_POST["content"] : "";
 
         if($id < 1 || $title ==="") {
-            throw new Exception("파라미터 오류");
+            throw new Exception("파라미터 오류 : P");
         }
-
+    
         // PDO Instance
         $conn = my_db_conn();
         
@@ -55,10 +52,22 @@ try {
 
         $arr_prepare = [
             "id" => $id
-            ,"user_id" => $user_id
             ,"title" => $title
             ,"content" => $content
         ];
+
+        $up_file = $_FILES["up_file"];
+
+        if($file["name"] !== "") {
+            $tmp_file_path = $up_file["tmp_name"];
+
+            $type = explode("/", $up_file["type"]);
+            $file_name = uniqid().".".$type[1];
+
+            move_uploaded_file($tmp_file_path, MY_PATH_ROOT."img/".$file_name);
+
+            $arr_prepare["img"] = "/img/".$file_name;
+        }
 
         my_board_update($conn, $arr_prepare);
 
@@ -98,7 +107,7 @@ try {
         </div>
     </div>
     <main>
-        <form action="/update.php" method="post">
+        <form action="/update.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $result["id"] ?>">
             <input type="hidden" name="page" value="<?php echo $page ?>">
 
@@ -112,15 +121,17 @@ try {
             </div>
             <div class="content-area">
                 <div class="img-box">
-                    <div id="upload-img"></div>
+                    <div id="upload-img"><img src="<?php echo $result["img"] ?>"></div>
                 </div>
                 <div class="t_area">
-                    <textarea name="content" id="content" class="content"><?php echo $result["content"] ?></textarea>            
+                    <textarea name="content" maxlength="30" id="content" class="content"><?php echo $result["content"] ?></textarea>            
                 </div>
             </div>
             <div class="file-upload">
-                <label for="up-file">파일 선택</label>
-                <input type="file" id="up-file" accept="image/*" onchange="setThumbnail(event);">
+                <div class="file_box">
+                    <label for="up-file">파일 선택</label>
+                    <input type="file" id="up-file" name="up_file" accept="image/*" onchange="setThumbnail(event);">
+                </div>
             </div>
             <div class="btn-insert">
                 <button type="submit" class="btn-write">확인</button>
@@ -133,9 +144,12 @@ try {
             var reader = new FileReader();
 
             reader.onload = function(event) {
+                let uploadImg = document.querySelector("#upload-img");
+                uploadImg.replaceChildren();
+
                 var img = document.createElement("img");
                 img.setAttribute("src", event.target.result);
-                document.querySelector("#upload-img").appendChild(img);
+                uploadImg.appendChild(img);
             };
             reader.readAsDataURL(event.target.files[0]);
         }

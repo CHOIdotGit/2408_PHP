@@ -60,11 +60,13 @@ function my_board_insert(PDO $conn, array $arr_param) {
     $sql = 
         " INSERT INTO boards ( "
         ."      user_id "
+        ."      ,img "
         ."      ,title "
         ."      ,content "
         ." ) "
         ." VALUES ( "
         ."      :user_id "
+        ."      ,:img "
         ."      ,:title "
         ."      ,:content "
         ." ) "
@@ -112,11 +114,37 @@ function my_board_update(PDO $conn, $arr_param) {
         " UPDATE boards "
         ." SET "
         ."      title = :title "
+        .(isset($arr_param["img"]) ? "      ,img = :img " : "")
         ."      ,content = :content "
         ."      ,updated_at = NOW() "
         ." WHERE "
         ."      id = :id "
     ;
+
+    // $arr_set = [];
+    // $arr_where = [];
+    // $set = "";
+    // $where = "";
+
+    // foreach($arr_param as $key => $val) {
+    //     if($key === "id") {
+    //         $arr_where[$key] = $key." = :".$key;
+    //     } else {
+    //         $arr_set[$key] = $key." = :".$key;
+    //     }
+    // }
+
+    // $set = implode(",", $arr_set);
+    // $where = implode(",", $arr_where);
+
+    // $sql =
+    //     " UPDATE boards "
+    //     ." SET "
+    //     ." ".$set." "
+    //     ." WHERE "
+    //     ." ".$where." "
+    // ;
+
     $stmt = $conn->prepare($sql);
     $result_flg = $stmt->execute($arr_param);
 

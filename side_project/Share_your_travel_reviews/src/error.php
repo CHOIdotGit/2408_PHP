@@ -19,14 +19,21 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
             </a>
         </div>
     </div>
-    <main>
+    <main class="main_err">
         <div class="error_table">
-            <h1>에러가 발생했습니다.</h1>
-            <p>메인 페이지로 되돌아가서 다시 실행해 주세요.</p>
-            <p>확인을 누르시면 메인 페이지로 돌아갑니다.</p>
-            <p><?php echo $th->getMessage() ?></p>
-            <a href="/"><button type="button" class="btn-bottom">확인</button></a>
+            <div class="box">
+                <h2>에러가 발생했습니다.</h2>
+                <br>
+                <p>메인 페이지로 되돌아가서</p>
+                <p>다시 실행해 주세요.</p>
+                <br>
+                <p>확인을 누르시면</p>
+                <p>메인 페이지로 돌아갑니다.</p>
+                <br>
+                <span><?php echo $th->getMessage() ?></span>
+            </div>
         </div>
+        <a href="/"><button type="button" class="btn btn-bottom">확인</button></a>
     </main>
 </body>
 </html>
