@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/delete.css">
+    <title>여행 사진 게시글 삭제 페이지</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header_title">
+            <a href="./index.html" class="header-img">
+                <h1>Share your travel reviews!</h1>
+            </a>
+        </div>
+    </div>
+    </div>  
+    <div class="notion">
+        <div class="full_screen">삭제된 글은 복구할 수 없습니다.</div>  
+        <div class="full_screen">삭제 하시겠습니까?</div>  
+    </div>
+    <div class="text-title">
+    <div class="title">제목</div> <!-- 제목 -->
+        <div class="user_num">회원 번호</div>
+        <div class="user_id">135478</div>
+    </div>
+    <div class="hr">
+        <hr>
+    </div>
+    <div class="content-area">
+        <div class="img-box">
+            <div id="upload-img">사진 미리보기</div>
+        </div>
+        <div class="t_area">
+            <textarea readonly class="content">내용글</textarea>            
+        </div>
+    </div>
+    <!-- <div class="file-upload preview-img">
+        <label for="up-file">파일 선택</label>
+        <input type="file" id="up-file" accept="image/*" onchange="setThumbnail(event);">
+    </div> -->
+    <script>
+        function setThumbnail(event) {
+            var reader = new FileReader();
+
+            reader.onload = function(event) {
+                var img = document.createElement("img");
+                img.setAttribute("src", event.target.result);
+                document.querySelector("#upload-img").appendChild(img);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <form action="./delete.html" class="btn-insert" method="post">
+        <button type="submit" class="btn-cancel">삭제</button>
+        <a href="./detail.html"><button type="button" class="btn-cancel">취소</button></a>
+    </form>
+</body>
+</html>
