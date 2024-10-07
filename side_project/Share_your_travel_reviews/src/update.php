@@ -55,8 +55,12 @@ try {
             ,"title" => $title
             ,"content" => $content
         ];
-
-        $up_file = $_FILES["up_file"];
+        
+        //update할 때 img는 $arr_prepare에 동적으로 포함된다.
+        // 유저가 이미지를 바꾸지 않을 때는 제외시키고 이미지를 바꿀 때는 포함시킨다. 
+        $up_file = $_FILES["up_file"]; // $up_file이라는 변수명에 슈퍼 글로벌 변수$_FILES를 담는다.
+        // 이렇게 적용하면 밑의 html코드에 있는 file type의 input태그의 name이 up_file인데 이곳에 적용된다.
+        // 그래서 name을 정해주는 것이 중요하다.
 
         if($file["name"] !== "") {
             $tmp_file_path = $up_file["tmp_name"];

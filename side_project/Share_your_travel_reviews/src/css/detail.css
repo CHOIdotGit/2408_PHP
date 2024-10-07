@@ -70,13 +70,15 @@ height: 384px;
 }
 
 #upload-img {
+    display: flex;
+    justify-content: center;
     margin: 32px 80px 32px 80px;
     height: 320px;
     background-color: #ffffff;
 }
 
 img{
-    width: 375px;
+    width: 208px;
     height: 320px;
 }
 
