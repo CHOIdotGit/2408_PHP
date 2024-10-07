@@ -28,6 +28,7 @@ try {
     } else {
     // POST 처리
         // parameter 획득(id, page, title, content)
+        // img는 밑에서 동적 처리를 하기 때문에 여기서 획득하지 않는다.
         // id 획득
         $id = isset($_POST["id"]) ? (int)$_POST["id"] : 0;
 
@@ -58,18 +59,29 @@ try {
         
         //update할 때 img는 $arr_prepare에 동적으로 포함된다.
         // 유저가 이미지를 바꾸지 않을 때는 제외시키고 이미지를 바꿀 때는 포함시킨다. 
+        // file 획득
         $up_file = $_FILES["up_file"]; // $up_file이라는 변수명에 슈퍼 글로벌 변수$_FILES를 담는다.
         // 이렇게 적용하면 밑의 html코드에 있는 file type의 input태그의 name이 up_file인데 이곳에 적용된다.
         // 그래서 name을 정해주는 것이 중요하다.
 
+        // file 이름을 곂치지 않게 설정
         if($file["name"] !== "") {
+            // 기존 파일 삭제
+            $arr_prepare_select = [
+                "id" => $id
+            ];
+            $result = my_board_select_id($conn, $arr_prepare_select);
+            if(!is_null($result["img"])) {
+                unlink(MY_PATH_ROOT.$result["img"]);
+            }
+
             $tmp_file_path = $up_file["tmp_name"];
 
             $type = explode("/", $up_file["type"]);
             $file_name = uniqid().".".$type[1];
 
             move_uploaded_file($tmp_file_path, MY_PATH_ROOT."img/".$file_name);
-
+            // chmod( , 0777)
             $arr_prepare["img"] = "/img/".$file_name;
         }
 
