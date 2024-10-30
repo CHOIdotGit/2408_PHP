@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/40.js" defer></script>
+    <link rel="stylesheet" href="../CSS/40.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>타이틀</h1>
+    <!-- 인라인 이벤트 -->
+    <button type="button" onclick="changeColor();">색상 변경</button>
+    <br>
+    <!-- 세미콜론은 문자열로 인식되어서 없어도 동작상 관계는 없음 -->
+    <button type="button" onclick="inlineEventBtn();">인라인 이벤트 버튼</button>
+    <br>
+    <!-- addEventListener -->
+    <button id="btn1" type="button" >이벤트 리스너</button>
+    <br>
+    <button id="btn_toggle" type="button">토글버튼</button>
+    <br>
+    <p id="naver">네이버로</p>
+    <br>
+    <h2>테스트용</h2>
+    <br>
+    <h3>이벤트 객체 테스트</h3>
+    <br>
+    <!-- modal -->
+    <button type="button" id="btn_modal">모달 오픈</button>
+    <div class="modal-container display-none">
+        <div class="modal-item">
+            <p>모달모달</p>
+            <button id="modal_close">닫기</button>
+        </div>
+    </div>
+</body>
+</html>

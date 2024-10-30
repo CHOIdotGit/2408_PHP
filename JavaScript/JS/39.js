@@ -1,5 +1,7 @@
 // ---------------------------------
 // DOM(Document Object Model)
+// HTML용 표준 객체 모델이자 프로그래밍 인터페이스
+// 객체 트리로 구성되어 있으며, 객체로서의 HTML요소와 속성, 요소에 엑세스 방법, 이벤트 등을 정의
 
 // 요소 선택
 
@@ -18,6 +20,8 @@ const CLASS_NONE_LI = document.getElementsByClassName('none-li');
 const SICK = document.querySelector('#sick');
 const NONE_LI = document.querySelector('.none-li'); // 해당하는 요소가 여러개라면 가장 첫번째 것만 가져온다.
 const ALL_NONE_LI = document.querySelectorAll('.none-li'); // ('.none-li, #title') << 얘도 적용됨
+// 태그명 또한 ()안에 적용할 수 있음
+// 다만, 해당하는 요소가 여러개라면 가장 첫번째 것만 가져온다.
 
 // 홀 빨 짝 파
 const LI = document.querySelectorAll('li');

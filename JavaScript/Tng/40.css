@@ -1,0 +1,19 @@
+.big_box {
+    width: 100px;
+    height: 100px;
+    background: navy;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.small_box { 
+    width: 60px;
+    height: 60px;
+    background: purple;   
+}
