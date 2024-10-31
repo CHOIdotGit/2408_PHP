@@ -2,8 +2,8 @@
     width: 100px;
     height: 100px;
     background: navy;
-    position: relative;
-    display: flex;
+    position: relative; /* 선생님은 여기에 absolute를 설정함 */
+    display: flex; /* 플렉스 대신 작은 박스에 마진을 설정 */
     justify-content: center;
     align-items: center;
 }

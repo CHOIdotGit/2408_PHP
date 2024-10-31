@@ -75,6 +75,9 @@ function test4(a, b) {
 
 // ---------------
 // 즉시 실행 함수
+(()=>{
+    
+})()
 
 const execFnc = (function(a, b) {
     return a + b;

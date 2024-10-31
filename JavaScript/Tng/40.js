@@ -52,3 +52,5 @@ SMALL_BOX.addEventListener('click', gotCaught);
 // 느낀점 : function을 잘 활용해야 한다.
 // 또한, addEventListener는 실행 처리가 아닌 이벤트를 준비하는 개념
 // 실제로 동작하는 것은 function으로 정의한 함수이다.
+// 유지보수면에서 함수 표현식이 좋다
+// addEventListener << 비동기 처리
