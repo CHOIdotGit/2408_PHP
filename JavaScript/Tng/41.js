@@ -109,3 +109,52 @@ console.log(TIME);
 })();
 
 
+// ----------------------------------------------
+// 선생님과 같이 만들어 보는 시간
+
+// function leftPadZero(target, length) {
+//     return String(target).padStart(length, '0');
+// } // 숫자 앞에 0을 붙이기 위함
+
+// function getDate() {
+//     const NOW = new Date();
+//     let hour = NOW.getHours(); // 시간 획득 (24시 포멧)
+//     let minute = NOW.getMinutes(); // 분 획득
+//     let second = NOW.getSeconds(); // 초 획득
+//     let ampm = hour < 12 ? '오전' : '오후'; // 오전 오후 구분
+//     let hour12 = hour > 12 ? hour : hour -12; // 시간 (12시 포멧)
+
+//     let timeFormat = 
+//         `${ampm} ${leftPadZero(hour12, 2)}:${leftPadZero(minute, 2)}:${leftPadZero(second, 2)}`;
+//         // 두 자리 숫자면 0을 붙이지 않고 한 자리 숫자면 0을 붙인다.
+    
+//     document.querySelector('#time').textContent = timeFormat;
+// }
+
+// (() + {
+// getDate();
+// let intervalId = null;
+// JS에서 setInterval은 거의 사용하지 않는다. 시계같은 것을 보여주는 용도를 제외하면.
+// intervalId = setInterval(getDate, 500); // 1000(1초)로 설정한다면 나중에 0.03초씩 밀린 것 때문에 1초가 아닌 2초 후에 갱신될 수 있다.
+
+
+// 멈춰 버튼
+// document.querySelector('#btn-stop').addEventListener('click', () => {
+//     clearInterval(intervalId);
+//     intervalId = null;
+// });
+
+// 재시작 버튼
+// document.querySelector('#btn-restart').addEventListener('click', () => {
+//     if(intervalId === null) {
+//         intervalId = setInterval(getDate, 500);
+//     }
+
+//     intervalId = setInterval(getDate, 500);
+// });
+// })();
+
+// 재시작을 누르고 멈추지 않는다.
+// 그 이유는 인터벌이 여러 개가 들어가고 있어서 그렇다.
+// 현재 작동하는 인터벌이 있다면 새로운 인터벌을 만들지 않으면 된다.
+// intervalId = setInterval(getDate, 500); << 요 처리를 안하면 된다.
