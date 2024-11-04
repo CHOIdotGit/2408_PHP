@@ -103,7 +103,7 @@
             </div>
         </div>
         <div class="card">
-            <img src="./IMG/ecd6ee59-9f18-4eec-b8f3-63cd2a9127a5-profile_image-300x300.png" class="card-img-top object-fit-cover" style="height: 300px;" alt="...">
+            <img src="./IMG/ine.png" class="card-img-top object-fit-cover" style="height: 300px;" alt="...">
             <div class="card-body">
               <h5 class="card-title">아이네</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
