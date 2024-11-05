@@ -2,6 +2,7 @@
 
 namespace Route;
 
+use Controllers\BoardController;
 use Controllers\UserController;
 
 // 라우터(트) : 유저의 요청을 분석해서 해당 controller로 연결해주는 클래스
@@ -14,9 +15,13 @@ class Route {
         // 요청 경로를 체크
         if($url === 'login') {
             if($httpMethod === 'GET') {
-                new Usercontroller('goLogin');
+                new UserController('goLogin');
             } else if($httpMethod === 'POST') {
-
+                new UserController('login');
+            }
+        } else if($url === 'boards') {
+            if($httpMethod === 'GET') {
+                new BoardController('index');
             }
         }
     }
