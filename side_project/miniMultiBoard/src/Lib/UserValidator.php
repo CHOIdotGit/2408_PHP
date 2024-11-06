@@ -20,14 +20,14 @@ class UserValidator {
         // 패스워드 체크
         if(array_key_exists('u_password', $data)) {
             if(preg_match($patternPassword, $data['u_password'], $matches) === 0) {
-                $arrErrorMsg[] = '비밀번호는 영어 대소문자 및 숫자, 특수문자(!, @) 8~20자로 작성해주세요.';
+                $arrErrorMsg[] = '비밀번호는 영어 대소문자 및 숫자, <br> 특수문자(!, @) 8~20자로 작성해주세요.';
             }
         }
 
         // 패스워드 확인 체크
         if(array_key_exists('u_password_chk', $data)) {
             if($data['u_password'] !== $data['u_password_chk']) {
-                $arrErrorMsg[] = '비밀번호와 비밀먼호 확인이 다릅니다.';
+                $arrErrorMsg[] = '비밀번호와 비밀번호 확인이 다릅니다.';
             }
         }
 
