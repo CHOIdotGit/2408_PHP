@@ -1,4 +1,4 @@
-{{-- 상송 --}}
+{{-- 상속 --}}
 @extends('layout.layout')
 {{-- extends가 자식임 --}}
 
