@@ -23,7 +23,7 @@ class BoardFactory extends Factory
             '/img/Pat_Mat.jpg'
             ,'/img/20210308225137.861310.jpg'
             ,'/img/i16141537287.jpg'
-            ,'/img/ine.jpg'
+            ,'/img/ine.png'
             ,'/img/농담곰1.jpg'
         ];
 

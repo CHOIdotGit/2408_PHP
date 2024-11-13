@@ -29,8 +29,8 @@ class BoardSeeder extends Seeder
         //     Board::factory(5000)->create();
         // }
 
-        for($i = 0; $i < 60; $i++){
-            Board::factory(500)->create();
+        for($i = 0; $i < 6; $i++){
+            Board::factory(5)->create();
         }
     }
 }
