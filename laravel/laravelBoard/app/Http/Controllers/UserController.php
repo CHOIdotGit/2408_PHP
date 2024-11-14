@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class UserController extends Controller
 {
+    protected $userInfo = [
+        'u_email' => ''
+        ,'u_name' => ''
+    ];
+
     // 로그인 페이지로 이동
     public function goLogin() {
         return view('login');
@@ -24,7 +31,7 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->only('u_email', 'u_password')
             ,[
-                'u_email' => ['required', 'exists:users,u_email', 'regex:/^[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}@[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}\.[a-zA-Z]{2,3}$/']
+                'u_email' => ['required', 'email', 'exists:users,u_email', 'regex:/^[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}@[0-9a-zA-Z](?!.*?[\-\_\.]{2})[a-zA-Z0-9\-\_\.]{3,63}\.[a-zA-Z]{2,3}$/']
                 ,'u_password' => ['required', 'between:8,20', 'regex:/^[a-zA-Z0-9!@]+$/']
             ]
         );
@@ -32,7 +39,8 @@ class UserController extends Controller
         if($validator->fails()) {
             return redirect()
                     ->route('goLogin')
-                    ->withErrors($validator->errors());
+                    ->withErrors($validator->errors())
+                    ->withInput();
         }
 
         // 회원 정보 획득, first : 하나의 레코드를 가져오는 것
@@ -61,5 +69,96 @@ class UserController extends Controller
         Session::regenerateToken(); // CSRF 토큰 재발급하는 처리
 
         return redirect()->route('goLogin');
+    }
+
+    // 회원가입 페이지로 이동
+    public function goRegist() {
+        return view('regist');
+    }
+    // 선생님 코드
+    public function registration() {
+        return view('registration');
+    }
+
+    // 회원가입 처리
+    public function regist(Request $request) {
+        Log::debug('리퀘스트 데이터', $request->only('u_email', 'u_password', 'u_password_chk', 'u_name'));
+        // 유효성 체크, 회원 정보 체크(exists)
+        $validator = Validator::make(
+            $request->only('u_email', 'u_password', 'u_password_chk', 'u_name')
+            ,[
+                'u_email' => ['required', 'email', 'unique:users,u_email']
+                ,'u_password' => ['required', 'between:8,20', 'regex:/^[a-zA-Z0-9!@]+$/']
+                ,'u_password_chk' => ['same:u_password']
+                ,'u_name' => ['required', 'unique:users,u_name', 'between:3,10', 'regex:/^[a-zA-Z가-힣ぁ-んァ-ヶ一-龯]+$/u']
+            ]
+        );
+
+        // 유효성 검사 실패 시 에러 메세지와 함께 회원가입페이지 리다이렉션
+        if($validator->fails()) {
+            return redirect()
+                    ->route('goRegist')
+                    ->withErrors($validator->errors())
+                    ->withInput();
+        }
+
+        try {
+            DB::beginTransaction();
+            User::create([
+                'u_email' => $request['u_email']
+                ,'u_password' => Hash::make($request['u_password'])
+                ,'u_name' => $request['u_name']
+            ]); // 배열보다 프로퍼티가 깔끔함
+
+            DB::commit();
+        } catch(Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('goRegist')->withErrors('회원가입 실패');
+        }
+
+
+       
+    }
+
+    // 선생님 코드
+    public function storeRegistration(Request $request) {
+        // 유효성 체크
+        $validator = Validator::make(
+            $request->only('u_email', 'u_password', 'u_password_chk', 'u_name')
+            ,[
+                'u_email' => ['required', 'email', 'unique:users,u_email']
+                ,'u_password' => ['required', 'between:8,20', 'regex:/^[a-zA-Z0-9!@]+$/']
+                ,'u_password_chk' => ['same:u_password']
+                ,'u_name' => ['required', 'between:2,50', 'regex:/^[가-힣]+$/u']
+            ]
+        );
+
+        if($validator->fails()) {
+            return redirect()
+                    ->route('get.registration')
+                    ->withErrors($validator->errors());
+        }
+
+        // 회원 정보 삽입
+        // $user = new User();
+        // $user->u_email = $request->u_email;
+        // $user->u_password = Hash::make($request->u_password);
+        // $user->u_name = $request->u_name;
+        // $user->save();
+
+        try {
+
+            DB::beginTransaction();
+            User::create([
+                'u_email' => $request->u_email
+                ,'u_password' => Hash::make($request->u_password)
+                ,'u_name' => $request->u_name
+            ]);
+            DB::commit();
+        } catch(Throwable $th) {
+            DB::rollBack();
+        }
+        
+        return '테스트';
     }
 }

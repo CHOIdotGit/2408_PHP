@@ -63,5 +63,5 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-    ];
+    ]; // 미들웨어를 사용했을 때의 단점도 있어 커스텀해서 사용하는 경우가 많음
 }

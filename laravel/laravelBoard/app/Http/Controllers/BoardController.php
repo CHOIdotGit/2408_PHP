@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Board;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class BoardController extends Controller
 {
@@ -35,6 +39,7 @@ class BoardController extends Controller
     public function create()
     {
         // 작성 페이지로 이동(새로운 것을 작성하는 페이지로 이동) - redirect
+        return view('insert');
     }
 
     /**
@@ -46,6 +51,41 @@ class BoardController extends Controller
     public function store(Request $request)
     {
         // 실제로 작성하는 페이지(작성 처리)
+        // 유효성 검사
+        $validator = Validator::make(
+            $request->only('b_title', 'b_content', 'b_img')
+            ,[
+            'b_title' => ['required', 'max:50']
+            ,'b_content' => ['required', 'between:2,200']
+            ,'b_img' => ['image']
+            // ,'bc_type' => ['required']
+        ]);
+        // 유효성 검사 실패 시 에러 메세지와 함께 회원가입페이지 리다이렉션
+        if($validator->fails()) {
+            return redirect()
+                    ->route('boards.create')
+                    ->withErrors($validator->errors())
+                    ->withInput();
+        }
+        
+        // 게시글 저장
+        try {
+            $path = $request->file('file')->store('img');
+            DB::beginTransaction();
+            Board::create([
+                'b_title' => $request->b_title
+                ,'b_content' => $request->b_content
+                ,'b_img' => $path
+                ,'u_id' => Auth::id()
+                ,'bc_type' => '0' // 자유게시판으로 설정
+            ]);
+            DB::commit();
+    
+        } catch(Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('boards.create')->withErrors($th->getMessage());
+        }
+        return redirect()->route('boards.index');
     }
 
     /**
@@ -68,6 +108,9 @@ class BoardController extends Controller
         Log::debug('획득한 상세 데이터 : ', $result->toArray());
 
         return response()->json($result->toArray());
+
+        $board = Board::findOrFail($id);
+        return view('/boards')->with('data', $board);
     }
 
     /**

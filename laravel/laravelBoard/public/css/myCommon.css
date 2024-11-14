@@ -6,3 +6,8 @@ main {
     gap : 15px;
     padding-bottom: 5rem;
 }
+
+#btnInsert {
+    /* cursor: pointer;
+    text-decoration: none !important; */
+}
