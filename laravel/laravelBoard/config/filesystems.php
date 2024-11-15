@@ -30,19 +30,23 @@ return [
 
     'disks' => [
 
+        // 안의 내용물(설정)이 진짜고 로컬 퍼블릭, s3는 그냥 이름이다
+        // 기본 서버
         'local' => [
             'driver' => 'local',
             // 'root' => storage_path('app'),
             'root' => public_path(),
         ],
 
+        // 외부 서버
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-        ],
+        ], 
 
+        //아마존 서버
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -52,7 +56,7 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-        ],
+        ], 
 
     ],
 

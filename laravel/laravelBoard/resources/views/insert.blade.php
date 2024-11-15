@@ -23,6 +23,7 @@
                 <option value="select">게시판 선택</option>
                 <option value="0">자유게시판</option>
                 <option value="1">질문게시판</option>
+                <option value="2">문의게시판</option>
             </select>
         </div> --}}
         <div class="mb-3 d-flex justify-content-center align-items-center" style="width: 575px;">
@@ -37,8 +38,11 @@
             <label for="file" class="form-label">이미지</label>
             <input type="file" name="file">
         </div>
-        <button type="submit" class="btn btn-primary btn-dark w-100 mb-3">작성</button>
-        <a href="/boards" class="btn btn-secondary w-100">취소</a>
+        <div class="d-flex justify-content-evenly align-items-center">
+            <button type="submit" class="btn btn-primary btn-dark w-25 mb-3" style="width: 50px;">작성</button>
+            <a href="{{ route('boards.index') }}" class="mb-3 btn btn-secondary w-25" style="width: 50px;">취소</a>
+        </div>
+        <input type="hidden" name="bc_type" value="{{ $bcType }}">
     </form>
 </main>
 @endsection

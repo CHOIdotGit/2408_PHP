@@ -166,6 +166,7 @@ return [
         ,'b_content' => '내용'
         ,'u_name' => '이름'
         ,'b_img' => '이미지'
+        ,'file' => '이미지'
         ,'bc_type' => '게시판'
     ],
 
