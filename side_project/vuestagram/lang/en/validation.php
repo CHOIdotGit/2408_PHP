@@ -27,7 +27,7 @@ return [
     'between' => [
         'numeric' => 'The :attribute must be between :min and :max.',
         'file' => 'The :attribute must be between :min and :max kilobytes.',
-        'string' => 'The :attribute must be between :min and :max characters.',
+        'string' => ':attribute가 올바르지 않습니다.',
         'array' => 'The :attribute must have between :min and :max items.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
@@ -107,7 +107,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute field is required.',
+    'required' => ':attribute를 입력해주세요.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -158,6 +158,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'account' => '아이디'
+        ,'password' => '비밀번호'
+    ],
 
 ];
