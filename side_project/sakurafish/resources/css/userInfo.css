@@ -7,6 +7,7 @@
 .user-info-box img {
     width: 70px;
     margin: 0 10px;
+    border-radius: 50%;
 }
 
 .user-info-content {
