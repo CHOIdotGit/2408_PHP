@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
         // 예외코드 초기화
         $code = 'E99';
 
-        // 인스턴스 확인 후 예외 정보 변경
+        // 인스턴스 확인 후 예외 정보 변경 (기본 제공되는)
         if($th instanceof AuthenticationException) {
             $code = 'E01';
         } else if($th instanceof PDOException) {
@@ -68,6 +68,12 @@ class Handler extends ExceptionHandler
         }
         
         $errInfo = $this->context()[$code];
+
+        // 커스텀 Exception 인스턴스 확인
+        if($th instanceof MyAuthException) {
+            $code = $th->getMessage();
+            $errInfo = $th->context()[$code];
+        }
 
         // Response Data 생성
         $responseData = [

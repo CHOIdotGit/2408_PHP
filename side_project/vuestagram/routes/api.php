@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [AuthController::class, 'login'])->name('post.login');
+// Route::middleware('my.auth')->post('/logout', [AuthController::class, 'logout'])->name('post.logout');
 
+// route group - 인증이 필요한 route group
+Route::middleware('my.auth')->group(function() {
+    // 인증 관련
+    Route::post('/logout', [AuthController::class, 'logout'])->name('post.logout');
+    
+    // 게시글 관련
+    Route::get('/boards', [BoardController::class, 'index'])->name('get.index');
+});

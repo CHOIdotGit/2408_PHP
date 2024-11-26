@@ -14,7 +14,18 @@ class MyEncrypt {
      */
     
     public function base64UrlEncode(string $json) {
-        return rtrim(strtr(base64_encode($json), '+/', '-'), '=');
+        return rtrim(strtr(base64_encode($json), '+/', '-_'), '=');
+    }
+
+    /**
+     * base64 URL decode
+     * 
+     * @param string $base64 base64 URL encode
+     * 
+     * @return string $json
+     */
+    public function base64UrlDecode(string $base64) {
+        return base64_decode(strtr($base64, '-_', '+/'));
     }
 
     /**
@@ -39,5 +50,17 @@ class MyEncrypt {
      */
     public function hashWithSalt(string $alg, string $str, string $salt) {
         return hash($alg, $str).$salt;
+    }
+
+    /**
+     * 특정 길이의 salt를 제거한 문자열을 반환
+     * 
+     * @param string $signature salt 포함된 signature
+     * @param int $saltLength salt 길이
+     * 
+     * @return string salt가 제거된 문자열
+     */
+    public function subSalt(string $signature, int $saltLength ) {
+        return mb_substr($signature, 0, (-1 * $saltLength));
     }
 }

@@ -5,7 +5,7 @@
         <textarea name="content" placeholder="내용을 적어주세요" maxlength="200"></textarea>
         <input type="file" name="file" accept="image/*">
         <button class="btn btn-bg-black btn-submit">작성</button>
-        <button @click="$router.back()" class="btn btn-submit">취소</button>
+        <button @click="$router.replace('/boards')" class="btn btn-submit">취소</button>
     </div>
 </template>
 

@@ -1,19 +1,7 @@
 <template>
     <div class="board-list-box">
-        <div @click="openModal" class="item">
-            <img src="/img/Pat_Mat.jpg">
-        </div>
-        <div @click="openModal" class="item">
-            <img src="/img/ine.png">
-        </div>
-        <div @click="openModal" class="item">
-            <img src="/img/3555945685_NPDB9lJX_r_3062642482_3136c79ba0892a976194282b814dc775a673e421.jpg">
-        </div>
-        <div @click="openModal" class="item">
-            <img src="/img/licensed-image.jpg">
-        </div>
-        <div @click="openModal" class="item">
-            <img src="/img/미어캣은_속았습니다.png">
+        <div v-for="item in boardList" :key="item" @click="openModal" class="item">
+            <img :src="item.img">
         </div>
     </div>
 
@@ -34,7 +22,20 @@
 
 <script setup>
 
-import { ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+// 보드리스트
+const boardList = computed(() => store.state.board.boardList);
+
+// before mount 처리
+onBeforeMount(() => {
+    if(store.state.board.boardList.length < 1) {
+        store.dispatch('board/getBoardListPagenation')
+    }
+});
 
 // 모달 관련
 const modalFlg = ref(false);
