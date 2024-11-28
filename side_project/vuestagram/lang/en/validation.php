@@ -107,7 +107,7 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => ':attribute를 입력해주세요.',
+    'required' => ':attribute은(는) 필수 항목입니다.',
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -161,6 +161,10 @@ return [
     'attributes' => [
         'account' => '아이디'
         ,'password' => '비밀번호'
+        ,'password_chk' => '비밀번호 확인'
+        ,'name' => '이름'
+        ,'gender' => '성별'
+        ,'profile' => '프로필 사진'
     ],
 
 ];

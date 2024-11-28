@@ -4,7 +4,7 @@
         <div class="header-container">
             <div class="header-content">
                 <div class="title">
-                    <h1 @click="$router.replace('/board')">Vuestagram</h1>
+                    <h1 @click="$router.replace('/boards')">Vuestagram</h1>
                 </div>
                 <img src="/ine.png" class="img-logo">
                 <div class="btn-group">

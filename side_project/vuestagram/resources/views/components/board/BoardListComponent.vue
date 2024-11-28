@@ -20,7 +20,7 @@
             <hr>
             <div class="etc-box">
                 <span>작성자 : {{ boardDetail.user.name }}</span>
-                <button @click="closeModal">닫기</button>
+                <button @click="closeModal" class="btn btn-header btn-bg-black">닫기</button>
             </div>
         </div>
     </div>

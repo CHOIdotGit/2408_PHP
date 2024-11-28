@@ -112,6 +112,94 @@ export default {
             });
         },
 
+        /**
+         * 회원가입 처리
+         * 
+         * @param  {*}  context
+         * @param  {*}  userInfo
+         */
+        registration(context, userInfo) {
+            const url = '/api/registration';
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            };
+
+            //  form data 셋팅
+            const formData = new FormData();
+            formData.append('account', userInfo.account);
+            formData.append('password', userInfo.password);
+            formData.append('password_chk', userInfo.password_chk);
+            formData.append('name', userInfo.name);
+            formData.append('gender', userInfo.gender);
+            formData.append('profile', userInfo.profile);
+
+            // 서버에 요청 보내기
+            axios.post(url, formData, config)
+            .then(response => {
+                alert('회원가입 성공\n가입한 계정으로 로그인해 주세요.');
+                router.replace('/login');
+            })
+            .catch(error => {
+                alert('회원가입 실패');
+            });
+        },
+        /**
+         * 토큰 만료-유효성 체크 후 처리 속행 - 액션 메소드
+         * 
+         * @param  {*}  context
+         * @param  {callback} callbackProcess 
+         */
+        chkTokenAndContinueProcess(context, callbackProcess) {
+            const payload = localStorage.getItem('accessToken').split('.')[1];
+            const base64 = payload.replace(/-/g, '+').replace(/_/g, '/');
+            const objectPayload = JSON.parse(window.atob(base64));
+            const now = new Date();
+
+            // 현재 시간과 만료 시간 비교하기
+            if((objectPayload.exp * 1000) > now.getTime()) {
+                // 토큰 유효
+                console.log('토큰 유효');
+                callbackProcess();
+            } else {
+                // 토큰 만료
+                console.log('토큰 만료');
+                context.dispatch('reissueAccessToken', callbackProcess);
+            }
+            // console.log(objectPayload.exp * 1000 <= now.getTime());
+            // console.log(objectPayload.exp, ceil(now.getTime() / 1000));
+            
+        },
+        /**
+         * 토큰 재발급 처리
+         * 
+         * @param  {*}  context
+         * @param  {callback} callbackProcess 
+         */
+        reissueAccessToken(context, callbackProcess) {
+            console.log('토큰 재발급 처리');
+            
+            const url = '/api/reissue';
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('refreshToken'),
+                }
+            }
+
+            axios.post(url, null, config)
+            .then(response => {
+                // 토큰  셋팅
+                localStorage.setItem('accessToken', response.data.accessToken);
+                localStorage.setItem('refreshToken', response.data.refreshToken);
+                
+                // 후속 처리 진행
+                callbackProcess();
+            })
+            .catch(error => {
+                console.error(error);
+            })
+        }
     },
     getters: {
 
