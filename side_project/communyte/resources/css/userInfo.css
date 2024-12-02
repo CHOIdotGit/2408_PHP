@@ -1,0 +1,36 @@
+.user-info{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* width: 80%; */
+}
+.user-info-title{
+    display: grid;
+    /* flex-direction: column; */
+    justify-items: center; /* 그리드 사용 시 중앙 정령 */
+    align-items: center;
+    font-weight: 600;
+}
+
+.btn {
+    border: none;
+    border-radius: 16px;
+    font-weight: 900;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.bg-gr {
+    background-color: rgb(47, 255, 116);
+    color: black;
+}
+
+.bg-gr:hover {
+    background-color: aqua;
+}
+
+
+.cp {
+    margin-bottom: 114px;
+}

@@ -1,0 +1,79 @@
+header, main, footer {
+    width: 80%;
+}
+
+
+.btn-img {
+    cursor: pointer;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-img {
+    border: none;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.sign, .logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    height: 40px;
+}
+
+.exit {
+    width: 40px;
+    height: 40px;
+
+}
+
+.btn {
+    border: none;
+    border-radius: 16px;
+    font-weight: 900;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.bg-bk {
+    background-color: black;
+    color: white;
+}
+
+.bg-nv{
+    background-color: navy;
+    color: white;
+}
+
+.bg-bk:hover {
+    background: skyblue;
+    color: black;
+}
+
+.bg-nv:hover {
+    background: rgb(135, 235, 148);
+    color: black;
+}
+
+.title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* width: 80%; */
+    height: 80px;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    text-align: center;
+}
+

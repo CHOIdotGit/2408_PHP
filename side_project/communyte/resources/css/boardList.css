@@ -1,0 +1,21 @@
+.board-box {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 400px));
+    gap: 16px;
+}
+
+.b-content {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-radius: 16px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.b-content>img {
+    width: 100%;
+    height: 360px;
+}
+
