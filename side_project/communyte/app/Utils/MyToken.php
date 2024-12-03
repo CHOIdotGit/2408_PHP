@@ -12,7 +12,10 @@ class MyToken {
     // 토큰 생성 - access, refresh
     // 업데이트 - refresh_token
     // 유효성 체크 - 존재 여부, 위조 여부, 유효 시간
-    // 토큰 분리
+    // 토큰 분리 - 오류 체크
+    // payload - 토큰 분리, 해당 값이 있는지 체크
+
+
     /**
      * 엑세스 토큰과 리프래시 토큰 생성
      * 
@@ -161,7 +164,7 @@ class MyToken {
         $payload = [
             'idt' => $user->user_id
             ,'iat' => $now // 발급 시간
-            ,'exp' => $now + $ttl
+            ,'exp' => $now + $ttl // ttl - 유효시간 초 단위로 설정
             ,'ttl' => $ttl
         ];
 
