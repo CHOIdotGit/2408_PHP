@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 use PDOException;
 
 class MyToken {
+    // 토큰 생성 - access, refresh
+    // 업데이트 - refresh_token
+    // 유효성 체크 - 존재 여부, 위조 여부, 유효 시간
+    // 토큰 분리
     /**
      * 엑세스 토큰과 리프래시 토큰 생성
      * 
@@ -51,7 +55,6 @@ class MyToken {
      * @return bool true
      */
     public function chkToken(string|null $token) {
-        // Log::debug("********** chkToken Start **********");
         // 토큰 존재 유뮤 체크
         if(empty($token)) {
             throw new MyAuthException('E20');
@@ -68,7 +71,6 @@ class MyToken {
             throw new MyAuthException('E21');
         }
 
-        // Log::debug("********** chkToken End **********");
         return true;
     }
 

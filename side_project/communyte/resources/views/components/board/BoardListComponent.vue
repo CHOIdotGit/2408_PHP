@@ -1,41 +1,21 @@
 <template>
     <!-- 게시글 -->
     <div class="board-box">
-        <div @click="openModal()" class="b-content">
-            <img src="/img/1664526605722.jpg">
-            <h3>제목제목</h3>
-            <p>내용내용</p>
-            <p>like</p>
-        </div>
-        <div @click="openModal()" class="b-content">
-            <img src="/img/1664526605722.jpg">
-            <h3>제목제목</h3>
-            <p>내용내용</p>
-            <p>like</p>
-        </div>
-        <div @click="openModal()" class="b-content">
-            <img src="/img/1664526605722.jpg">
-            <h3>제목제목</h3>
-            <p>내용내용</p>
-            <p>like</p>
-        </div>
-        <div @click="openModal()" class="b-content">
-            <img src="/img/1664526605722.jpg">
-            <h3>제목제목</h3>
-            <p>내용내용</p>
-            <p>like</p>
+        <div v-for="item in boardList" :key="item" @click="openModal(item.board_id)" class="b-content">
+            <img :src="item.img">
         </div>
     </div>
 
     <!-- 모달 -->
-    <div class="modal">
-        <div>
-            <img src="">
+    <div v-show="modalFlg" class="modal">
+        <div v-if="boardDetail">
+            <img :src="boardDetail.img">
             <hr>
-            <p>내용내용</p>
+            <p>{{ boardDetail.content }}</p>
+            <p>{{ boardDetail.like }}</p>
             <hr>
             <div>
-                <span>작성자 : 이름</span>
+                <span>작성자 : {{ boardDetail.user.name }}</span>
                 <button @click="closeModal" class="btn bg-bk">닫기</button>
             </div>
         </div>
@@ -43,20 +23,34 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue';
 
-    // 모달 상태 관리?
-    const modalFlg = ref(false);
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
-    // 모달 열기
-    const openModal = () => {
-    modalFlg.value = true;
+const store = useStore();
+
+// board detail info
+const boardDetail = computed(() => store.state.board.boardDetail);
+
+// board list
+const boardList = computed(() => store.state.board.boardLst);
+
+// before mount ?? 아마 페이지 관련인가?
+onBeforeMount(() => {
+    if(store.state.board.boardList.length < 1) {
+        store.dispatch('board/boardListPagination')
     }
+});
 
-    // 모달 닫기
-    const closeModal = () => {
-        modalFlg.value = false;
-    } 
+// 모달 - 클릭 이벤트
+const modalFlg = ref(false);
+const openModal = (id) =>{
+    store.dispatch('board/showBoard', id);
+    modalFlg.value = true;
+}
+const closeModal = () => {
+    modalFlg.value = false;
+}
 </script>
 
 <style>

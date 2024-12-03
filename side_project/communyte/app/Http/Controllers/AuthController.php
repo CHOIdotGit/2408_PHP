@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\MyAuthException;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Services\AuthService;
+use MyToken;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use MyToken;
 
 class AuthController extends Controller
 {
     public function login(UserRequest $request) {
-        // 유저 정보 획득
+        // 유저 정보 획득하는 함수
         $userInfo = User::where('account', $request->account)
                     ->withCount('boards')
                     ->first();
@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         $responseData = [
             'success' => true
-            ,'msg' => '로그인 성공'
+            ,'msg' => 'login - complete'
             ,'accessToken' => $accessToken
             ,'refreshToken' => $refreshToken
             ,'data' => $userInfo->toArray()
@@ -103,6 +103,5 @@ class AuthController extends Controller
         ];
 
         return response()->json($responseData, 200);
-
     }
 }

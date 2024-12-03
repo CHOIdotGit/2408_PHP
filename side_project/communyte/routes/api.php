@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoardController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,14 +19,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', function(Request $request) {
-    // 이메일과 비밀번호 가져오기
-    $credentials = $request->only('email', 'password');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/registration', [UserController::class, 'store'])->name('user.store');
 
-    // 이메일을 기준으로 사용자 검색
-    $userInfo = User::where('email', $credentials['email'])->first();
-
-    if($userInfo && Hash::check($credentials['password'], $userInfo->password)) {
-        $token = $userInfo->createToken('YourAppName')->plainTextToken;
-    }
+// route group - 인증이 필요한 route group
+Route::middleware('my.auth')->group(function() {
+    // 인증 관련
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::post('/reissue', [AuthController::class, 'reissue'])->name('auth.reissue');
+    
+    // 게시글 관련
+    Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
+    Route::get('/boards/{id}', [BoardController::class, 'show'])->name('boards.show');
+    Route::post('/boards', [BoardController::class, 'store'])->name('boards.store');
 });
